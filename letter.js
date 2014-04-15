@@ -89,7 +89,7 @@ function selectEmployees(){
  */
  
  //Open Original document with the employees list 
- var employees = SpreadsheetApp.openById("0Ag-OGPzUmTv5dFBzcUgzb040aF9hSXhzTzN4VkRMU0E").getRangeByName('employees').getValues();
+ var employees = SpreadsheetApp.openById("{{ document_id }}").getRangeByName('employees').getValues();
  
  //Create array for the array of employees.
   var employeesArray = [];
@@ -171,14 +171,14 @@ function getInfo(data, key){
               var s4 = doc.appendParagraph("");
           
               // Append Salutation
-              var location = doc.appendParagraph("Santo Domingo, Republica Dominicana");
+              var location = doc.appendParagraph(" {{ city }}, {{ country }}");
               
               //This can be to be based on the actual date. 
               var date = doc.appendParagraph(today.day + ', ' + today.day_month +' de ' + today.month+' del ' + today.year);
           
               //more space
               var s5 = doc.appendParagraph("");
-              var salutation = doc.appendParagraph('A quien corresponda, Banco Popular Dominicano,')
+              var salutation = doc.appendParagraph('A quien corresponda, {{ bank_name }},')
               
               //More Space for the content
               var s6 = doc.appendParagraph("");
@@ -194,7 +194,7 @@ function getInfo(data, key){
               }
 
                   content += employeeName + ' cédula ' + employeeId;
-                  content += ' bajo la empresa Stance Data S.R.L. de RNC número 130877025 en la cual labora.';
+                  content += ' bajo la empresa {{ company }} de RNC número {{ rnc_number }} en la cual labora.';
                   
               var letterContent = doc.appendParagraph(content);
               
